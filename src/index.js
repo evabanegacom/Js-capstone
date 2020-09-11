@@ -5,7 +5,7 @@ import bomb from '../dist/assets/bomb.png';
 import dude from '../dist/assets/dude.png';
 
 const endgame = document.querySelector('p')
-const naming = document.querySelector('.formdiv')
+const naming = document.querySelector('.formname')
 
 let config = {
     type: Phaser.AUTO,
@@ -48,7 +48,7 @@ function preload ()
 function create ()
 {
     //  A simple background for our game
-    this.add.image(500, 300, 'sky');
+    this.add.image(500, 250, 'sky');
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();

@@ -5,3 +5,8 @@
 .formdiv {
   float: right;
 }
+
+body {
+  background-color: skyblue;
+  background-size: cover;
+}
