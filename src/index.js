@@ -4,11 +4,12 @@ import star from '../dist/assets/star.png';
 import bomb from '../dist/assets/bomb.png';
 import dude from '../dist/assets/dude.png';
 
+const endgame = document.querySelector('p')
 
 let config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 650,
     physics: {
         default: 'arcade',
         arcade: {
@@ -36,7 +37,7 @@ let game = new Phaser.Game(config);
 
 function preload ()
 {
-    this.load.image('sky', 'assets/sky.png');
+    this.load.image('sky', 'assets/sky.jpg');
     this.load.image('ground', 'assets/platform.png');
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
@@ -46,20 +47,25 @@ function preload ()
 function create ()
 {
     //  A simple background for our game
-    this.add.image(400, 300, 'sky');
+    this.add.image(500, 300, 'sky');
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();
 
     //  Here we create the ground.
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+    platforms.create(680, 620, 'ground').setScale(2).refreshBody();
 
     //  Now let's create some ledges
-    platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
-    platforms.create(750, 220, 'ground');
+    platforms.create(600, 450, 'ground');
+    platforms.create(1000, 300, 'ground');
+    platforms.create(10, 150, 'ground');
+    platforms.create(80, 620, 'ground').setScale(2).refreshBody()
+    platforms.create(10, 500, 'ground');
+    platforms.create(350, 330, 'ground');
+    platforms.create(750, 150, 'ground');
 
+    
     // The player and its settings
     player = this.physics.add.sprite(100, 450, 'dude');
 
@@ -94,14 +100,18 @@ function create ()
     //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
     stars = this.physics.add.group({
         key: 'star',
-        repeat: 11,
-        setXY: { x: 12, y: 0, stepX: 70 }
+        repeat: 20,
+        setXY: { x: 16, y: 0, stepX: 100 },        
     });
 
-    stars.children.iterate(function (child) {
+       stars.children.iterate(function (child) {
+        
+         //Give each star a slightly different bounce
+        child.setBounce(1);
+        child.setCollideWorldBounds(true);
+        child.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        child.allowGravity = true
 
-        //  Give each star a slightly different bounce
-        child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
 
     });
 
@@ -184,7 +194,7 @@ function collectStar (player, star)
 function hitBomb (player, bomb)
 {
     this.physics.pause();
-
+    endgame.innerHTML = 'GAME OVER'
     player.setTint(0xff0000);
 
     player.anims.play('turn');
