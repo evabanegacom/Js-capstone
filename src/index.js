@@ -5,6 +5,7 @@ import bomb from '../dist/assets/bomb.png';
 import dude from '../dist/assets/dude.png';
 
 const endgame = document.querySelector('p')
+const naming = document.querySelector('.formdiv')
 
 let config = {
     type: Phaser.AUTO,
@@ -101,17 +102,16 @@ function create ()
     stars = this.physics.add.group({
         key: 'star',
         repeat: 20,
-        setXY: { x: 16, y: 0, stepX: 100 },        
+        setXY: { x: 30, y: 0, stepX: 100 },        
     });
 
        stars.children.iterate(function (child) {
         
          //Give each star a slightly different bounce
-        child.setBounce(1);
+        child.setBounce(1, 1);
         child.setCollideWorldBounds(true);
-        child.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        child.allowGravity = true
-
+        child.setVelocity(Phaser.Math.Between(-200, 200), Phaser.Math.Between(-200, 200));
+        child.allowGravity = false
 
     });
 
@@ -177,6 +177,10 @@ function collectStar (player, star)
         stars.children.iterate(function (child) {
 
             child.enableBody(true, child.x, 0, true, true);
+            child.setBounce(1, 1);
+            child.setCollideWorldBounds(true);
+            child.setVelocity(Phaser.Math.Between(-200, 200), Phaser.Math.Between(-200, 200));
+            child.allowGravity = false
 
         });
 
@@ -194,6 +198,7 @@ function collectStar (player, star)
 function hitBomb (player, bomb)
 {
     this.physics.pause();
+    naming.classList.remove('hide')
     endgame.innerHTML = 'GAME OVER'
     player.setTint(0xff0000);
 
