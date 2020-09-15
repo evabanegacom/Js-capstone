@@ -1,35 +1,4 @@
-const endgame = document.querySelector('p');
-const naming = document.querySelector('.formname');
-
-const startgame = document.querySelector('.start');
-startgame.addEventListener('click', (e) => {
-  e.preventDefault();
-  const menudiv = document.querySelector('.menudiv');
-  menudiv.classList.add('hide');
-  const gamediv = document.querySelector('.gamediv');
-  gamediv.classList.remove('hide');
-});
-
-
-
-const config = {
-  type: Phaser.AUTO,
-  width: 1000,
-  height: 650,
-  parent: 'gamebody',
-  physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { y: 300 },
-      debug: false,
-    },
-  },
-  scene: {
-    preload,
-    create,
-    update,
-  },
-};
+import start from './dom.js';
 
 let player;
 let stars;
@@ -40,18 +9,86 @@ let score = 0;
 let gameOver = false;
 let scoreText;
 
-const game = new Phaser.Game(config);
+const endgame = document.querySelector('.nameEntry');
+const naming = document.querySelector('.formname');
+const forminput = document.getElementById('name');
+const button = document.querySelector('button');
+const container = document.querySelector('.score-container');
+const restart = document.querySelector('.restart');
+const startgame = document.querySelector('.start');
 
-// game.scene.start('menu');
+restart.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location.reload();
+});
 
+
+startgame.addEventListener('click', (e) => {
+  e.preventDefault();
+  start();
+});
+
+button.addEventListener('click', (e) => {
+  e.preventDefault();
+  const scorediv = document.createElement('div');
+  scorediv.className = 'score';
+  const scores = document.createElement('div');
+  scores.innerHTML = score;
+  const names = document.createElement('div');
+  names.innerHTML = forminput.value;
+
+  scorediv.appendChild(names);
+  scorediv.appendChild(scores);
+  container.appendChild(scorediv);
+});
 
 function preload() {
   this.load.image('sky', 'assets/sky.jpg');
   this.load.image('ground', 'assets/platform.png');
   this.load.image('star', 'assets/star.png');
   this.load.image('bomb', 'assets/bomb.png');
-  this.load.audio('song', 'assets/got.mp3')
+  this.load.audio('song', 'assets/got.mp3');
   this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+}
+
+function collectStar(player, star) {
+  star.disableBody(true, true);
+
+  //  Add and update the score
+  score += 10;
+  scoreText.setText(`Score: ${score}`);
+/* eslint-disable */
+
+  if (stars.countActive(true) === 0) {
+    //  A new batch of stars to collect
+    stars.children.iterate((child) => {
+      child.enableBody(true, child.x, 0, true, true);
+      child.setBounce(1, 1);
+      child.setCollideWorldBounds(true);
+      child.setVelocity(Phaser.Math.Between(-200, 200), Phaser.Math.Between(-200, 200));
+      child.allowGravity = false;
+    });
+
+    const x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+
+    const bomb = bombs.create(x, 16, 'bomb');
+    bomb.setBounce(1);
+    bomb.setCollideWorldBounds(true);
+    bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    bomb.allowGravity = false;
+  }
+}
+
+function hitBomb(player) {
+  this.physics.pause();
+  naming.classList.remove('hide');
+  endgame.innerHTML = 'GAME OVER';
+  player.setTint(0xff0000);
+  this.gamesound.pause();
+
+  player.anims.play('turn');
+
+  gameOver = true;
 }
 
 function create() {
@@ -61,7 +98,7 @@ function create() {
   //  The platforms group contains the ground and the 2 ledges we can jump on
   platforms = this.physics.add.staticGroup();
 
-  this.gamesound = this.sound.add('song')
+  this.gamesound = this.sound.add('song');
   const soundConfig = {
     mute: false,
     volume: 1,
@@ -69,10 +106,10 @@ function create() {
     detune: 0,
     seek: 0,
     loop: true,
-    delay: 0
-  }
+    delay: 0,
+  };
 
-  this.gamesound.play(soundConfig)
+  this.gamesound.play(soundConfig);
 
   //  Here we create the ground.
   //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
@@ -122,7 +159,7 @@ function create() {
   //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
   stars = this.physics.add.group({
     key: 'star',
-    repeat: 20,
+    repeat: 2,
     setXY: { x: 30, y: 0, stepX: 100 },
   });
 
@@ -173,65 +210,51 @@ function update() {
   }
 }
 
-function collectStar(player, star) {
-  star.disableBody(true, true);
 
-  //  Add and update the score
-  score += 10;
-  scoreText.setText(`Score: ${score}`);
+const config = {
+  type: Phaser.AUTO,
+  width: 1000,
+  height: 650,
+  parent: 'gamebody',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 300 },
+      debug: false,
+    },
+  },
+  scene: {
+    preload,
+    create,
+    update,
+  },
+};
 
-  if (stars.countActive(true) === 0) {
-    //  A new batch of stars to collect
-    stars.children.iterate((child) => {
-      child.enableBody(true, child.x, 0, true, true);
-      child.setBounce(1, 1);
-      child.setCollideWorldBounds(true);
-      child.setVelocity(Phaser.Math.Between(-200, 200), Phaser.Math.Between(-200, 200));
-      child.allowGravity = false;
-    });
 
-    const x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+const game = new Phaser.Game(config);
 
-    const bomb = bombs.create(x, 16, 'bomb');
-    bomb.setBounce(1);
-    bomb.setCollideWorldBounds(true);
-    bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-    bomb.allowGravity = false;
-  }
-}
 
-function hitBomb(player) {
-  this.physics.pause();
-  naming.classList.remove('hide');
-  endgame.innerHTML = 'GAME OVER';
-  player.setTint(0xff0000);
-  this.gamesound.pause()
-
-  player.anims.play('turn');
-
-  gameOver = true;
-}
 game;
+/* eslint-enable */
 
 const pushData = async (e) => {
-    const information = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/scores/', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        Accept: 'Application/json',
-        'Content-Type': 'application/json',
-      },
-      body: e,
-    }).then(response => response);
-    return information.json();
-  };
+  const information = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/score/', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      Accept: 'Application/json',
+      'Content-Type': 'application/json',
+    },
+    body: e,
+  }).then(response => response);
+  return information.json();
+};
 
 const getData = async () => {
-    const data = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/scores').then(result => result).catch((e) => e);
-    let jData = await data.json();
-    jData = await jData.result;
-  
-    await jData.sort((a, b) => b.score - a.score);
-    return jData;
-  };
-  
+  const data = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/score').then(result => result).catch((e) => e);
+  let jData = await data.json();
+  jData = await jData.result;
+
+  await jData.sort((a, b) => b.score - a.score);
+  return jData;
+};

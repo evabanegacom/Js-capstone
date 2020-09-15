@@ -11,7 +11,12 @@ body {
   background-size: cover;
 }
 
-.menu{
+.nameform {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
   border: 2px solid cyan;
   border-radius: 10%;
   display: flex;
@@ -49,4 +54,21 @@ body {
   color: rgb(36, 4, 4);
   font-weight: 700;
   cursor: pointer;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.score {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.restart {
+  cursor: pointer;
+  color: rgb(19, 2, 19);
+  font-size: 20px;
+  font-weight: 700;
 }
