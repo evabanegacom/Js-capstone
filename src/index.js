@@ -10,6 +10,8 @@ startgame.addEventListener('click', (e) => {
   gamediv.classList.remove('hide');
 });
 
+
+
 const config = {
   type: Phaser.AUTO,
   width: 1000,
@@ -48,6 +50,7 @@ function preload() {
   this.load.image('ground', 'assets/platform.png');
   this.load.image('star', 'assets/star.png');
   this.load.image('bomb', 'assets/bomb.png');
+  this.load.audio('song', 'assets/got.mp3')
   this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
 }
 
@@ -57,6 +60,19 @@ function create() {
 
   //  The platforms group contains the ground and the 2 ledges we can jump on
   platforms = this.physics.add.staticGroup();
+
+  this.gamesound = this.sound.add('song')
+  const soundConfig = {
+    mute: false,
+    volume: 1,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: true,
+    delay: 0
+  }
+
+  this.gamesound.play(soundConfig)
 
   //  Here we create the ground.
   //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
@@ -172,7 +188,6 @@ function collectStar(player, star) {
       child.setCollideWorldBounds(true);
       child.setVelocity(Phaser.Math.Between(-200, 200), Phaser.Math.Between(-200, 200));
       child.allowGravity = false;
-      alert('avoid the bombs')
     });
 
     const x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
@@ -190,6 +205,7 @@ function hitBomb(player) {
   naming.classList.remove('hide');
   endgame.innerHTML = 'GAME OVER';
   player.setTint(0xff0000);
+  this.gamesound.pause()
 
   player.anims.play('turn');
 
@@ -219,4 +235,3 @@ const getData = async () => {
     return jData;
   };
   
-  export default { pushData, getData };
