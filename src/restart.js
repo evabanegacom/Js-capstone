@@ -1,12 +1,12 @@
-import score from '../src/index.js'
-import pushData from '../src/score.js'
-//import getData from '../src/score.js'
+import score from './index.js';
+import pushData from './score.js';
+// import getData from '../src/score.js'
 
 const forminput = document.getElementById('name');
 const container = document.querySelector('.score-container');
 
 
-function buttonfunction(){
+function buttonfunction() {
   const scorediv = document.createElement('div');
   scorediv.className = 'score';
   const scores = document.createElement('div');

@@ -1,7 +1,7 @@
-import start from '../src/dom.js';
-//import buttonfunction from '../src/restart.js';
-import pushData from '../src/score.js'
-import getData from '../src/score.js'
+import start from './dom';
+// import buttonfunction from '../src/restart.js';
+import pushData from './score.js';
+import getData from './score.js';
 
 let player;
 let stars;
@@ -33,7 +33,7 @@ startgame.addEventListener('click', (e) => {
 
 button.addEventListener('click', (e) => {
   e.preventDefault();
-  //buttonfunction();
+  // buttonfunction();
   const scorediv = document.createElement('div');
   scorediv.className = 'score';
   const scores = document.createElement('div');
@@ -41,7 +41,7 @@ button.addEventListener('click', (e) => {
   const names = document.createElement('div');
   names.innerHTML = forminput.value;
   getData();
-  //pushData(forminput.value, score);
+  // pushData(forminput.value, score);
 
   scorediv.appendChild(names);
   scorediv.appendChild(scores);

@@ -1,48 +1,46 @@
-import score from '../src/index.js'
+import score from './index.js';
 
 // const inputname = document.querySelector('#name')
 
 const pushData = async (score, name) => {
-    await fetch("https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/cCm80CLUyO7HIMn3WlTB/scores/", {
-        method: "POST",
-        body: JSON.stringify({
-        "user": name,
-        "score": score
-      }),
-        headers: {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        credentials: "same-origin"
-      }).then(function(response) {
-        response.status
-        response.statusText
-        console.log(response)
+  await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/cCm80CLUyO7HIMn3WlTB/scores/', {
+    method: 'POST',
+    body: JSON.stringify({
+      user: name,
+      score,
+    }),
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+    credentials: 'same-origin',
+  }).then((response) => {
+    response.status;
+    response.statusText;
+    console.log(response);
 
-        response.headers
-        response.url
-      
-        return 'leader board score created'
-      }).catch(function(error) {
-        error.message
-      })
-      
-}
+    response.headers;
+    response.url;
+
+    return 'leader board score created';
+  }).catch((error) => {
+    error.message;
+  });
+};
 
 const getData = async () => {
-    await fetch("https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/cCm80CLUyO7HIMn3WlTB/scores/", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        credentials: "same-origin"
-      }).then(function(response) {
-        response.json().then(data =>console.log(data))
-        //return 'leader board score created'
-      }).catch(function(error) {
-        error.message
-      })
-      
-}
+  await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/cCm80CLUyO7HIMn3WlTB/scores/', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+    credentials: 'same-origin',
+  }).then((response) => {
+    response.json().then(data => console.log(data));
+    // return 'leader board score created'
+  }).catch((error) => {
+    error.message;
+  });
+};
 
 // const pushData = async () => {
 //     const body = JSON.stringify({ name: "precious" });
@@ -58,7 +56,7 @@ const getData = async () => {
 //     const response = await fetch(url, data);
 //     const result = await response.json();
 //     return result;
-//     }; 
+//     };
 
 // const getData = async () => {
 //     const data = await fetch("https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/cCm80CLUyO7HIMn3WlTB/scores", {
@@ -77,13 +75,12 @@ const getData = async () => {
 //         response.statusText
 //         response.headers
 //         response.url
-      
+
 //         return response.text()
 //       }).catch(function(error) {
 //         error.message
 //       })
-      
+
 // }
 
-export default getData
-  
+export default getData;
