@@ -1,7 +1,5 @@
 import start from './dom';
-// import buttonfunction from '../src/restart.js';
-import pushData from './score.js';
-import getData from './score.js';
+import {pushData, getData} from './score';
 
 let player;
 let stars;
@@ -41,7 +39,7 @@ button.addEventListener('click', (e) => {
   const names = document.createElement('div');
   names.innerHTML = forminput.value;
   getData();
-  // pushData(forminput.value, score);
+  //pushData(forminput.value, score);
 
   scorediv.appendChild(names);
   scorediv.appendChild(scores);
