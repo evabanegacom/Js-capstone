@@ -1,5 +1,6 @@
 import start from './dom';
-import {pushData, getData} from './score';
+import {getData} from './score';
+import buttonfunction from './restart'
 
 let player;
 let stars;
@@ -14,9 +15,13 @@ const endgame = document.querySelector('.nameEntry');
 const naming = document.querySelector('.formname');
 const button = document.querySelector('button');
 const restart = document.querySelector('.restart');
+const topscore = document.querySelector('.top')
 const startgame = document.querySelector('.start');
-const forminput = document.getElementById('name');
-const container = document.querySelector('.score-container');
+
+topscore.addEventListener('click', (e) => {
+  e.preventDefault()
+  getData()
+})
 
 restart.addEventListener('click', (e) => {
   e.preventDefault();
@@ -31,19 +36,7 @@ startgame.addEventListener('click', (e) => {
 
 button.addEventListener('click', (e) => {
   e.preventDefault();
-  // buttonfunction();
-  const scorediv = document.createElement('div');
-  scorediv.className = 'score';
-  const scores = document.createElement('div');
-  scores.innerHTML = score;
-  const names = document.createElement('div');
-  names.innerHTML = forminput.value;
-  getData();
-  //pushData(forminput.value, score);
-
-  scorediv.appendChild(names);
-  scorediv.appendChild(scores);
-  container.appendChild(scorediv);
+  buttonfunction(score);
 });
 
 function preload() {
