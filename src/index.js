@@ -1,6 +1,7 @@
 import start from '../src/dom.js';
 //import buttonfunction from '../src/restart.js';
 import pushData from '../src/score.js'
+import getData from '../src/score.js'
 
 let player;
 let stars;
@@ -39,7 +40,8 @@ button.addEventListener('click', (e) => {
   scores.innerHTML = score;
   const names = document.createElement('div');
   names.innerHTML = forminput.value;
-  pushData();
+  getData();
+  //pushData(forminput.value, score);
 
   scorediv.appendChild(names);
   scorediv.appendChild(scores);
@@ -88,7 +90,7 @@ function hitBomb(player) {
   naming.classList.remove('hide');
   endgame.innerHTML = 'GAME OVER';
   player.setTint(0xff0000);
-  this.gamesound.pause();
+  //this.gamesound.pause();
 
   player.anims.play('turn');
 
@@ -102,7 +104,7 @@ function create() {
   //  The platforms group contains the ground and the 2 ledges we can jump on
   platforms = this.physics.add.staticGroup();
 
-  this.gamesound = this.sound.add('song');
+  //this.gamesound = this.sound.add('song');
   const soundConfig = {
     mute: false,
     volume: 1,
@@ -113,7 +115,7 @@ function create() {
     delay: 0,
   };
 
-  this.gamesound.play(soundConfig);
+  //this.gamesound.play(soundConfig);
 
   //  Here we create the ground.
   //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
