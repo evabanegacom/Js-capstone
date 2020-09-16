@@ -1,4 +1,6 @@
-import start from './dom.js';
+import start from '../src/dom.js';
+//import buttonfunction from '../src/restart.js';
+import pushData from '../src/score.js'
 
 let player;
 let stars;
@@ -11,11 +13,11 @@ let scoreText;
 
 const endgame = document.querySelector('.nameEntry');
 const naming = document.querySelector('.formname');
-const forminput = document.getElementById('name');
 const button = document.querySelector('button');
-const container = document.querySelector('.score-container');
 const restart = document.querySelector('.restart');
 const startgame = document.querySelector('.start');
+const forminput = document.getElementById('name');
+const container = document.querySelector('.score-container');
 
 restart.addEventListener('click', (e) => {
   e.preventDefault();
@@ -30,12 +32,14 @@ startgame.addEventListener('click', (e) => {
 
 button.addEventListener('click', (e) => {
   e.preventDefault();
+  //buttonfunction();
   const scorediv = document.createElement('div');
   scorediv.className = 'score';
   const scores = document.createElement('div');
   scores.innerHTML = score;
   const names = document.createElement('div');
   names.innerHTML = forminput.value;
+  pushData();
 
   scorediv.appendChild(names);
   scorediv.appendChild(scores);
@@ -236,25 +240,4 @@ const game = new Phaser.Game(config);
 
 game;
 /* eslint-enable */
-
-const pushData = async (e) => {
-  const information = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/score/', {
-    method: 'POST',
-    mode: 'cors',
-    headers: {
-      Accept: 'Application/json',
-      'Content-Type': 'application/json',
-    },
-    body: e,
-  }).then(response => response);
-  return information.json();
-};
-
-const getData = async () => {
-  const data = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/score').then(result => result).catch((e) => e);
-  let jData = await data.json();
-  jData = await jData.result;
-
-  await jData.sort((a, b) => b.score - a.score);
-  return jData;
-};
+export default score;
