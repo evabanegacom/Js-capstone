@@ -1,7 +1,21 @@
 import { getData } from './score';
 
 function userscore(result) {
-  const scoreuser = (Object.values(result));
+  for(let i=0; i < result.sort().length; i+=1){
+      let temp = result
+      const n = 10
+      const maps = temp.map(item => `<p>${item.score}</p>`)
+      return maps.slice(0, n)
+  }
+}
+
+function username(result) {
+  for(let i=0; i < result.sort().length; i+=1){
+      let temp = result
+      const n = 10
+      const maps = temp.map(item => `<p>${item.user}</p>`)
+      return maps.slice(0, n)
+  }
 }
 
 function highscore(result) {
@@ -9,13 +23,13 @@ function highscore(result) {
   const newdivscore = document.createElement('div');
   newdivscore.className = 'scoreDisplay';
   const newscore = document.createElement('p');
-  newscore.innerHTML = (Object.values(result));
+  newscore.innerHTML = userscore(result)
   const newuser = document.createElement('p');
-  // console.log((Object.values(result)))
-  // newuser.innerHTML = result.keys
+  newuser.innerHTML = username(result)
   newdivscore.appendChild(newuser);
   newdivscore.appendChild(newscore);
   leadscore.appendChild(newdivscore);
+  
 }
 
 const scoreboard = document.querySelector('.top');

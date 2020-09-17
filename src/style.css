@@ -37,7 +37,8 @@ body {
   flex-direction: column;
   background-color: chocolate;
   position: relative;
-  top: -20em;
+  line-height: 2px;
+  top: -22em;
   width: 400px;
   text-align: center;
 }

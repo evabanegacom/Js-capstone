@@ -33,8 +33,8 @@ const getData = async () => {
     credentials: 'same-origin',
   }).then((response) => {
     response.json().then(data => {
-      highscore(data);
-      console.log(data);
+      highscore(data.result);
+      console.log(data.result);
     });
   }).catch((error) => {
     error.message;
