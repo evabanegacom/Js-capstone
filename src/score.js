@@ -1,3 +1,5 @@
+import {highscore} from './dom'
+
 const pushData = async (name, score) => {
   await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/cCm80CLUyO7HIMn3WlTB/scores/', {
     method: 'POST',
@@ -30,11 +32,12 @@ const getData = async () => {
     },
     credentials: 'same-origin',
   }).then((response) => {
-    response.json().then(data => console.log(data));
-    // return 'leader board score created'
+    response.json().then(data => {
+      highscore(data);
+      console.log(data)
+    })
   }).catch((error) => {
     error.message;
   });
 };
-
 export {getData, pushData}

@@ -1,5 +1,4 @@
-import start from './dom';
-import {getData} from './score';
+import {start} from './dom';
 import buttonfunction from './restart'
 
 let player;
@@ -15,13 +14,7 @@ const endgame = document.querySelector('.nameEntry');
 const naming = document.querySelector('.formname');
 const button = document.querySelector('button');
 const restart = document.querySelector('.restart');
-const topscore = document.querySelector('.top')
 const startgame = document.querySelector('.start');
-
-topscore.addEventListener('click', (e) => {
-  e.preventDefault()
-  getData()
-})
 
 restart.addEventListener('click', (e) => {
   e.preventDefault();
