@@ -47,6 +47,10 @@ body {
   justify-content: space-evenly;
 }
 
+.namealert {
+  color: red;
+}
+
 .scoreBoard {
   float: left;
 }

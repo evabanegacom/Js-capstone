@@ -1,5 +1,5 @@
-import {start} from './dom';
-import buttonfunction from './restart'
+import { start } from './dom';
+import buttonfunction from './restart';
 
 let player;
 let stars;
