@@ -1,20 +1,24 @@
 import { getData } from './score';
 
+// employees.sort((a, b) => {
+//   return a.age - b.age;
+// });
 function userscore(result) {
-  for (let i = 0; i < result.sort().length; i += 1) {
-    const temp = result;
+  for (let i = 0; i < result.sort((a, b) => {return b.score-a.score}).length; i += 1) {
     const n = 10;
+    const temp = result.slice(0, n)
     const maps = temp.map(item => `<p>${item.score}</p>`);
-    return maps.slice(0, n);
+    return maps.join('')
   }
 }
 
 function username(result) {
-  for (let i = 0; i < result.sort().length; i += 1) {
-    const temp = result;
+  for (let i = 0; i < result.sort((a, b) => {return b.score-a.score}).length; i += 1) {
     const n = 10;
+    const temp = result.slice(0, n)
     const maps = temp.map(item => `<p>${item.user}</p>`);
-    return maps.slice(0, n);
+    const arra = maps.join('');
+    return arra
   }
 }
 

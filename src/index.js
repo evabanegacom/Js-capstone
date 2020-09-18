@@ -149,7 +149,7 @@ function create() {
   //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
   stars = this.physics.add.group({
     key: 'star',
-    repeat: 2,
+    repeat: 10,
     setXY: { x: 30, y: 0, stepX: 100 },
   });
 
