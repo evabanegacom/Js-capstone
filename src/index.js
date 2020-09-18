@@ -1,5 +1,6 @@
 import { start } from './dom';
 import buttonfunction from './restart';
+import './style.css'
 
 let player;
 let stars;
