@@ -53,7 +53,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Screenshot](images/weather.png)
+![Screenshot](images/game.png)
 
 This is a weather app that demonstrates using application processing interface (A.P.I) to get information
 to clients over the web

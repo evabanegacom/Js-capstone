@@ -1,4 +1,5 @@
-const request = require('pushData');
+import pushData from '../src/score';
+
 const app = require('../src/score');
 
 describe('Post Endpoints', () => {
