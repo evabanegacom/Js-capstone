@@ -1,6 +1,7 @@
 import { start } from './dom';
 import buttonfunction from './restart';
 import './style.css'
+import './download.jpeg'
 
 let player;
 let stars;
