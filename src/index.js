@@ -6,7 +6,9 @@ let stars;
 let bombs;
 let platforms;
 let cursors;
+/* eslint-disable */
 let score = 0;
+/* eslint-enable */
 let gameOver = false;
 let scoreText;
 
@@ -50,7 +52,6 @@ function collectStar(player, star) {
 /* eslint-disable */
 
   if (stars.countActive(true) === 0) {
-    //  A new batch of stars to collect
     stars.children.iterate((child) => {
       child.enableBody(true, child.x, 0, true, true);
       child.setBounce(1, 1);
@@ -74,7 +75,7 @@ function hitBomb(player) {
   naming.classList.remove('hide');
   endgame.innerHTML = 'GAME OVER';
   player.setTint(0xff0000);
-  //this.gamesound.pause();
+  this.gamesound.pause();
 
   player.anims.play('turn');
 

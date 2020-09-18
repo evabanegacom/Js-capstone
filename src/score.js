@@ -2,7 +2,7 @@
 import { highscore } from './dom';
 
 const pushData = async (name, score) => {
-  await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/cCm80CLUyO7HIMn3WlTB/scores/', {
+  await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/BulHvxB2vf6EwvbAg88l/scores/', {
     method: 'POST',
     body: JSON.stringify({
       user: name,
@@ -25,7 +25,7 @@ const pushData = async (name, score) => {
 };
 
 const getData = async () => {
-  await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/cCm80CLUyO7HIMn3WlTB/scores/', {
+  await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/BulHvxB2vf6EwvbAg88l/scores/', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
@@ -34,7 +34,6 @@ const getData = async () => {
   }).then((response) => {
     response.json().then(data => {
       highscore(data.result);
-      console.log(data.result);
     });
   }).catch((error) => {
     error.message;
