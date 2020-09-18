@@ -21,6 +21,7 @@ function buttonfunction(score) {
     pushData(forminput.value, score);
     namealert.innerHTML = 'score updated';
     form.reset();
+    forminput.classList.add('hide')
   }
 }
 export default buttonfunction;

@@ -10,7 +10,6 @@ let platforms;
 let cursors;
 /* eslint-disable */
 let score = 0;
-/* eslint-enable */
 let gameOver = false;
 let scoreText;
 
@@ -50,7 +49,6 @@ function collectStar(player, star) {
 
   score += 10;
   scoreText.setText(`Score: ${score}`);
-/* eslint-disable */
 
   if (stars.countActive(true) === 0) {
     stars.children.iterate((child) => {

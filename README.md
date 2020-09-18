@@ -27,7 +27,7 @@
     <img src="images/JS.jpg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">weather app</h3>
+  <h3 align="center">Js-capstone</h3>
 
   <p align="center">
     This is the JavaScript capstone Project from the Javascript section of the Microverse curriculum.
@@ -55,7 +55,7 @@
 
 ![Screenshot](images/game.png)
 
-This is a weather app that demonstrates using application processing interface (A.P.I) to get information
+This is a Js-capstone that demonstrates using application processing interface (A.P.I) to get information
 to clients over the web
 
 The idea focuses on easily getting information through API
@@ -71,7 +71,7 @@ This project was built using these technologies.
 * Javascript
 * HTML
 * CSS
-* Bootstrap
+* webpack
 
 <!-- ABOUT THE PROJECT -->
 ## Getting Started
