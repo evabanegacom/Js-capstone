@@ -46,7 +46,6 @@ function preload() {
 function collectStar(player, star) {
   star.disableBody(true, true);
 
-  //  Add and update the score
   score += 10;
   scoreText.setText(`Score: ${score}`);
 /* eslint-disable */
@@ -83,13 +82,11 @@ function hitBomb(player) {
 }
 
 function create() {
-  //  A simple background for our game
   this.add.image(500, 250, 'sky');
 
-  //  The platforms group contains the ground and the 2 ledges we can jump on
   platforms = this.physics.add.staticGroup();
 
-  //this.gamesound = this.sound.add('song');
+  this.gamesound = this.sound.add('song');
   const soundConfig = {
     mute: false,
     volume: 1,
@@ -100,13 +97,11 @@ function create() {
     delay: 0,
   };
 
-  //this.gamesound.play(soundConfig);
+  this.gamesound.play(soundConfig);
 
-  //  Here we create the ground.
-  //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
   platforms.create(680, 620, 'ground').setScale(2).refreshBody();
 
-  //  Now let's create some ledges
+  //  platform
   platforms.create(600, 450, 'ground');
   platforms.create(1000, 300, 'ground');
   platforms.create(10, 150, 'ground');
@@ -116,14 +111,11 @@ function create() {
   platforms.create(750, 150, 'ground');
 
 
-  // The player and its settings
   player = this.physics.add.sprite(100, 450, 'dude');
 
-  //  Player physics properties. Give the little guy a slight bounce.
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
 
-  //  Our player animations, turning, walking left and walking right.
   this.anims.create({
     key: 'left',
     frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
@@ -144,10 +136,8 @@ function create() {
     repeat: -1,
   });
 
-  //  Input Events
   cursors = this.input.keyboard.createCursorKeys();
 
-  //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
   stars = this.physics.add.group({
     key: 'star',
     repeat: 10,
@@ -155,7 +145,6 @@ function create() {
   });
 
   stars.children.iterate((child) => {
-    // Give each star a slightly different bounce
     child.setBounce(1, 1);
     child.setCollideWorldBounds(true);
     child.setVelocity(Phaser.Math.Between(-200, 200), Phaser.Math.Between(-200, 200));
@@ -167,7 +156,6 @@ function create() {
   //  The score
   scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
-  //  Collide the player and the stars with the platforms
   this.physics.add.collider(player, platforms);
   this.physics.add.collider(stars, platforms);
   this.physics.add.collider(bombs, platforms);

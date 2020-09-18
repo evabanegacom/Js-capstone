@@ -3,6 +3,7 @@ import { pushData } from './score';
 const forminput = document.getElementById('name');
 const container = document.querySelector('.score-container');
 const namealert = document.querySelector('.nameEntry');
+const form = document.querySelector('form')
 
 function buttonfunction(score) {
   if (forminput.value.length === 0) {
@@ -19,6 +20,7 @@ function buttonfunction(score) {
     container.appendChild(scorediv);
     pushData(forminput.value, score);
     namealert.innerHTML = 'score updated';
-  }
+    form.reset();
+    }
 }
 export default buttonfunction;
