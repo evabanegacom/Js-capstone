@@ -49,16 +49,16 @@
 * [Contact](#Authors)
 * [Acknowledgements](#acknowledgements)
 * [How it works](#How-it-works)
+* [How to play](#How-to-play)
+* [Game design](#Game-Design)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 ![Screenshot](images/game.png)
 
-This is a Js-capstone that demonstrates using application processing interface (A.P.I) to get information
+This is a Js-capstone that demonstrates using Phaser LIbrary to  make a platform Game, it uses API methods to store and fetch the leader board data
 to clients over the web
-
-The idea focuses on easily getting information through API
 
 ## LIVE DEMO
  [Link to live demo](https://raw.githack.com/evabanegacom/Js-capstone/feature/dist/index.html) 
@@ -81,6 +81,30 @@ This project was built using these technologies.
 
 - $ `git clone git@github.com:evabanegacom/Js-capstone.git`
 
+## How to play
+
+* When the game first starts;
+
+* Click play to start the game.
+* To play, all you need to do is user your arrow keys to jump and move.
+* collet the stars and avoid the jumping explosives the stars earn you points
+* colliding with the stars ends the game and
+* A dialogue box shows up requesting you to enter your name.
+* After you enter your name and click submit, it takes you to another screen with two buttons, play and credits.
+
+# Game design
+
+The game uses a number of sprites to bring all the scenes to life. User can expect well-designed animations and map textures. Some of the sprites used include;
+
+# Jumper
+
+![Screenshot](images/mygame.png)
+
+* moving character
+* jumps on platforms
+* avoids explosives
+
+![Screenshot](images/exp.png)
 
 <!-- CONTACT -->
 

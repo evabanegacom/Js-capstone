@@ -1,0 +1,39 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   '/home/precious/.nvm/versions/node/v14.4.0/bin/node',
+1 verbose cli   '/home/precious/.nvm/versions/node/v14.4.0/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'migrate:reset'
+1 verbose cli ]
+2 info using npm@6.14.7
+3 info using node@v14.4.0
+4 verbose run-script [ 'premigrate:reset', 'migrate:reset', 'postmigrate:reset' ]
+5 info lifecycle Js-capstone@1.0.0~premigrate:reset: Js-capstone@1.0.0
+6 info lifecycle Js-capstone@1.0.0~migrate:reset: Js-capstone@1.0.0
+7 verbose lifecycle Js-capstone@1.0.0~migrate:reset: unsafe-perm in lifecycle true
+8 verbose lifecycle Js-capstone@1.0.0~migrate:reset: PATH: /home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/home/precious/Desktop/Js-capstone/node_modules/.bin:/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/home/precious/Desktop/Js-capstone/node_modules/.bin:/home/precious/.nvm/versions/node/v14.4.0/bin:/home/precious/.rbenv/shims:/home/precious/.rbenv/bin:/home/precious/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+9 verbose lifecycle Js-capstone@1.0.0~migrate:reset: CWD: /home/precious/Desktop/Js-capstone
+10 silly lifecycle Js-capstone@1.0.0~migrate:reset: Args: [ '-c', 'npx sequelize-cli db:migrate:undo:all && npm run migrate' ]
+11 silly lifecycle Js-capstone@1.0.0~migrate:reset: Returned: code: 1  signal: null
+12 info lifecycle Js-capstone@1.0.0~migrate:reset: Failed to exec migrate:reset script
+13 verbose stack Error: Js-capstone@1.0.0 migrate:reset: `npx sequelize-cli db:migrate:undo:all && npm run migrate`
+13 verbose stack Exit status 1
+13 verbose stack     at EventEmitter.<anonymous> (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/npm-lifecycle/index.js:332:16)
+13 verbose stack     at EventEmitter.emit (events.js:315:20)
+13 verbose stack     at ChildProcess.<anonymous> (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/npm-lifecycle/lib/spawn.js:55:14)
+13 verbose stack     at ChildProcess.emit (events.js:315:20)
+13 verbose stack     at maybeClose (internal/child_process.js:1051:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:287:5)
+14 verbose pkgid Js-capstone@1.0.0
+15 verbose cwd /home/precious/Desktop/Js-capstone
+16 verbose Linux 5.3.0-62-generic
+17 verbose argv "/home/precious/.nvm/versions/node/v14.4.0/bin/node" "/home/precious/.nvm/versions/node/v14.4.0/bin/npm" "run" "migrate:reset"
+18 verbose node v14.4.0
+19 verbose npm  v6.14.7
+20 error code ELIFECYCLE
+21 error errno 1
+22 error Js-capstone@1.0.0 migrate:reset: `npx sequelize-cli db:migrate:undo:all && npm run migrate`
+22 error Exit status 1
+23 error Failed at the Js-capstone@1.0.0 migrate:reset script.
+23 error This is probably not a problem with npm. There is likely additional logging output above.
+24 verbose exit [ 1, true ]
