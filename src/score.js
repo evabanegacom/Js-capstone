@@ -74,4 +74,6 @@ const getData = async () => {
     /* eslint-enable */
   });
 };
-export { getData, pushData, userscore, username };
+export {
+  getData, pushData, userscore, username,
+};

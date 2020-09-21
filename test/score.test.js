@@ -1,7 +1,8 @@
-import { pushData, getData, userscore, username } from '../src/score';
+import {
+  pushData, getData, userscore, username,
+} from '../src/score';
 
 let result;
-let user
 
 
 global.fetch = jest.fn(() => Promise.resolve({
@@ -37,16 +38,30 @@ it('to send users once', async () => {
 });
 
 
-describe("order by score", () => {
-  test("it should return high score", () => {
-    let results = [{user: 'lui', score: 40}, {user: 'tem', score: 50}]
+describe('order by score', () => {
+  test('it should return high score', () => {
+    const results = [{ user: 'lui', score: 40 }, { user: 'tem', score: 50 }];
     expect(userscore(results)).toBe(`<p>${50}</p><p>${40}</p>`);
   });
 });
 
-describe("order by score", () => {
-  test("it should return high score", () => {
-    let results = [{user: 'lui', score: 40}, {user: 'tem', score: 50}]
-    expect(username(results)).toBe(`<p>${"tem"}</p><p>${"lui"}</p>`);
+describe('score will not be saved without a score', () => {
+  test('it should return undefined', () => {
+    const results = [{ user: 'lui' }, { user: 'tem' }];
+    expect(userscore(results)).toBe(`<p>${'undefined'}</p><p>${'undefined'}</p>`);
+  });
+});
+
+describe('return user with higher score', () => {
+  test('it should return high score', () => {
+    const results = [{ user: 'lui', score: 40 }, { user: 'tem', score: 50 }];
+    expect(username(results)).toBe(`<p>${'tem'}</p><p>${'lui'}</p>`);
+  });
+});
+
+describe('score will not be saved without a name', () => {
+  test('it should return undefined', () => {
+    const results = [{ score: 40 }, { score: 50 }];
+    expect(username(results)).toBe(`<p>${'undefined'}</p><p>${'undefined'}</p>`);
   });
 });
