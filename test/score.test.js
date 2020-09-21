@@ -10,7 +10,7 @@ beforeEach(() => {
   fetch.mockClear();
 });
 
-it("finds exchange", async () => {
+it("it gets users once", async () => {
   const rate = await getData();
 
   //expect(rate).toEqual(1.42);
@@ -28,7 +28,7 @@ beforeEach(() => {
   fetch.mockClear();
 });
 
-it("finds exchange", async () => {
+it("to send users once", async () => {
   const rate = await pushData('lui', 40);
 
   //expect(rate).toEqual(1.42);
