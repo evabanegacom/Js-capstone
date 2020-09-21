@@ -90,7 +90,7 @@ This project was built using these technologies.
 * collet the stars and avoid the jumping explosives the stars earn you points
 * colliding with the stars ends the game and
 * A dialogue box shows up requesting you to enter your name.
-* After you enter your name and click submit, it takes you to another screen with two buttons, play and credits.
+* After you enter your name and click submit, it takes you to another screen with two buttons, play and top scores.
 
 # Game design
 
