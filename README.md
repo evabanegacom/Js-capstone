@@ -101,12 +101,16 @@ The game uses a number of sprites to bring all the scenes to life. User can expe
 ![Screenshot](images/mygame.png)
 
 * moving character
-* jumps on platforms
 * avoids explosives
-* collects stars
 
 ![Screenshot](images/exp.png)
+
+* collects stars
+
 ![Screenshot](images/star.png)
+
+* jumps on platforms
+
 ![Screenshot](images/platform.png)
 
 <!-- CONTACT -->
