@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Endless Runner</title>
+  <link rel="stylesheet" href="../src/style.css" type="text/css" media="screen">
+  <script src="//cdn.jsdelivr.net/npm/phaser@3.24.1/dist/phaser.js"></script>
+</head>
+
+<body>
+  <div class='formdiv'>
+    <form class='formname hide'>
+      <div class='nameform'>
+        <p class='restart'>restart</p>
+        <p class='nameEntry'>Enter your name</p>
+        <label for='name'>Enter Name</label>
+        <br>
+        <input type='text' name='names' id='name' required autocomplete='off'>
+        <br>
+        <button class='button' type='submit'>SUBMIT</button>
+        <br>
+        <div class='score-container'>
+          <div class='score'>
+            <div class='tablename'>Name</div>
+            <div class='tablescore'>Score</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class='menudiv'>
+    <div class='menu'>
+      <span class='logo'>CATCHING STARS</span>
+      <br />
+      <img src='../src/download.jpeg' alt=''>
+      <p class='top'>Top Scores</p>
+      <p class='start'>Start</p>
+      <span class='instruction'>Use arrow keys to jump and move</span>
+    </div>
+  </div>
+  <div class='scoreBoard hide'>
+    <div class='topscores'>
+      <p>LeaderBoard</p>
+      <div class='scoreDisplay'>
+        <p>User</p>
+        <p>score</p>
+      </div>
+    </div>
+  </div>
+  <div id='gamebody' class='hide gamediv'></div>
+  <script type="module" src="bundle.js"></script>
+</body>
+
+</html>
