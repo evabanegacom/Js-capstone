@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { getData } from './score';
+const scoreboard = document.querySelector('.top');
 
 function userscore(result) {
   for (let i = 0; i < result.sort((a, b) => b.score - a.score).length; i += 1) {
@@ -33,8 +34,6 @@ function highscore(result) {
   newdivscore.appendChild(newscore);
   leadscore.appendChild(newdivscore);
 }
-
-const scoreboard = document.querySelector('.top');
 
 scoreboard.addEventListener('click', (e) => {
   e.preventDefault();
